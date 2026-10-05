@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+.git/
+.pytest_cache/
+
+# Local database: the container uses its own volume.
+*.db
+
+# Rebuilt inside the image by train.py, so a local copy would never be used.
+triage_model.pkl
+
+Dockerfile
+.dockerignore

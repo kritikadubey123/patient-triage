@@ -1,0 +1,29 @@
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      # Allow the browser origin the frontend is served from (see ports below).
+      CORS_ORIGINS: http://localhost:5173
+    volumes:
+      # Named volume so patient records survive `docker compose down`.
+      - triage-data:/data
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_API_URL: http://localhost:8000/api
+    ports:
+      # Host 5173 -> nginx on port 80. Keeping 5173 means the backend's CORS
+      # setting is the same as in local development.
+      - "5173:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  triage-data:

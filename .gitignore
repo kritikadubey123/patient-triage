@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node
+node_modules/
+dist/
+
+# Secrets / local config (keep the .env.example template)
+.env
+.env.*
+!.env.example
+
+# Generated files: the Docker build trains the model, and the database is created at runtime
+backend/triage_model.pkl
+*.db
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

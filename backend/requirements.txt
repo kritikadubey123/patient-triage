@@ -1,0 +1,16 @@
+fastapi>=0.110,<1.0
+uvicorn[standard]>=0.29
+sqlalchemy>=2.0,<2.1
+aiosqlite>=0.20
+pydantic>=2.6,<3.0
+
+# ML. The .pkl is tied to the scikit-learn version that created it, so after
+# training run `pip freeze | grep -i -E "scikit-learn|numpy|pandas|joblib"`
+# and pin those exact versions here (Docker must match your training env).
+scikit-learn>=1.4
+numpy>=1.26
+pandas>=2.1
+joblib>=1.3
+
+# Only needed for the smoke test below
+httpx>=0.27
